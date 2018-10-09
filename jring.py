@@ -3,18 +3,21 @@
 import RPi.GPIO as GPIO
 import time,sys,os
 
+
+pin=17
+
 #開啟樹苺派GPIO
 GPIO.setmode(GPIO.BCM)
 
 #使用GPIO電力
-GPIO.setup(17, GPIO.OUT)
+GPIO.setup(pin, GPIO.OUT)
 
 #開啟基本電源
-GPIO.output(17, 1)
+GPIO.output(pin, 1)
 
 while True:
     #如果發生短路就播放音效
-    if not GPIO.input(17):
+    if not GPIO.input(pin):
         os.system('aplay /home/pi/0.wav')
         print "有人來了"
         time.sleep(2)
