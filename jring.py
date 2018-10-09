@@ -5,6 +5,7 @@ import time,sys,os
 
 
 pin=17
+wav_path="/home/pi/0.wav"
 
 #開啟樹苺派GPIO
 GPIO.setmode(GPIO.BCM)
@@ -18,7 +19,7 @@ GPIO.output(pin, 1)
 while True:
     #如果發生短路就播放音效
     if not GPIO.input(pin):
-        os.system('aplay /home/pi/0.wav')
+        os.system('aplay %s' % wav_path)
         print "有人來了"
         time.sleep(2)
 
